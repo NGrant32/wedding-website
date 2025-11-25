@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Niall &amp; Krittika – 29 May 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --accent: #4d7252;        /* soft green */
+      --accent-light: #9bb89f;  /* lighter green for details */
+      --text-main: #333333;
+      --text-muted: #666666;
+      --border-soft: #e5e5e5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text-main);
+  line-height: 1.6;
+
+  /* New background image */
+  background-image: url('wildflowers.png');
+  background-repeat: no-repeat;
+  background-size: cover;           /* fill the entire page */
+  background-position: center;      /* keeps image centred */
+  background-attachment: fixed;     /* gives subtle parallax scrolling */
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.70);  /* ← controls softness */
+  pointer-events: none;
+  z-index: -1;  /* sit behind content */
+}
+
+
+    .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px 16px 48px 16px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .card {
+      position: relative;
+      max-width: 960px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 32px 24px 40px 24px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    @media (min-width: 768px) {
+      .card {
+        padding: 40px 56px 56px 56px;
+      }
+    }
+
+    /* Wildflower corner image */
+    .wildflower-corner {
+      position: absolute;
+      top: -16px;
+      right: -8px;
+      width: 220px;
+      max-width: 35vw;
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .wildflower-corner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: saturate(1.1);
+    }
+
+    /* Subtle “paper” effect behind card */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 10px 12px auto auto;
+      border-radius: 24px;
+      border: 1px solid rgba(77, 114, 82, 0.12);
+      z-index: -2;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .tagline {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .names {
+      font-family: "Playfair Display", serif;
+      font-size: 2.4rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .ampersand {
+      font-size: 0.8em;
+      color: var(--accent);
+    }
+
+    .date {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      margin-bottom: 6px;
+      margin-top: 4px;
+    }
+
+    .location {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Nav / section links */
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin: 28px 0 16px 0;
+    }
+
+    .nav a {
+      font-size: 0.85rem;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(77, 114, 82, 0.28);
+      color: var(--accent);
+      background: rgba(155, 184, 159, 0.04);
+      transition: background 0.15s ease, transform 0.08s ease;
+    }
+
+    .nav a:hover {
+      background: rgba(155, 184, 159, 0.18);
+      transform: translateY(-1px);
+    }
+
+    main {
+      margin-top: 16px;
+      display: grid;
+      gap: 32px;
+    }
+
+    section {
+      border-top: 1px solid rgba(0, 0, 0, 0.04);
+      padding-top: 20px;
+    }
+
+    section:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    section h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+
+    section p {
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .muted {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Our Day / simple two-column for bigger screens */
+    .two-column {
+      display: grid;
+      gap: 16px;
+    }
+
+    @media (min-width: 800px) {
+      .two-column {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 24px;
+      }
+    }
+
+    .highlight-box {
+      border-radius: 16px;
+      border: 1px solid rgba(77, 114, 82, 0.18);
+      padding: 16px 18px;
+      background: rgba(155, 184, 159, 0.04);
+      font-size: 0.95rem;
+    }
+
+    .schedule-list {
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .schedule-list li {
+      padding: 5px 0;
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.04);
+    }
+
+    .schedule-time {
+      font-weight: 500;
+      color: var(--accent);
+      min-width: 80px;
+    }
+
+    .schedule-event {
+      flex: 1;
+    }
+
+    /* Travel & accommodation */
+    .pill-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(77, 114, 82, 0.18);
+      margin-bottom: 4px;
+    }
+
+    .list {
+      margin-top: 8px;
+      padding-left: 16px;
+      font-size: 0.95rem;
+    }
+
+    .list li {
+      margin-bottom: 4px;
+    }
+
+    /* RSVP */
+    .rsvp-box {
+      border-radius: 20px;
+      border: 1px solid rgba(77, 114, 82, 0.25);
+      padding: 18px 18px 20px 18px;
+      text-align: center;
+      background: linear-gradient(
+        135deg,
+        rgba(155, 184, 159, 0.09),
+        rgba(255, 255, 255, 0.8)
+      );
+    }
+
+    .rsvp-box p {
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      background-color: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 10px 20px rgba(77, 114, 82, 0.24);
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 26px rgba(77, 114, 82, 0.32);
+      background-color: #405f45;
+    }
+
+    .btn span.arrow {
+      font-size: 1.1em;
+      translate: 0 1px;
+    }
+
+    /* Gifts / notes */
+    .note {
+      font-size: 0.95rem;
+      margin-top: 6px;
+    }
+
+    footer {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer span {
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="card">
+      <!-- Wildflowers in top-right corner -->
+      <!-- TODO: Replace 'wildflowers.png' with your own image path -->
+      
+
+      <header>
+        <div class="tagline">Save the date</div>
+
+        <!-- EDIT: Names -->
+        <h1 class="names">Niall <span class="ampersand">&amp;</span> Krittika</h1>
+
+        <!-- EDIT: Date -->
+        <p class="date">29 May 2026</p>
+
+        <!-- EDIT: Location -->
+        <p class="location">House for an Art Lover, 10 Dumbreck Rd, Bellahouston, Glasgow, G41 5BW</p>
+      </header>
+
+      <nav class="nav">
+        <a href="#our-day">Our Day</a>
+        <a href="#travel">Travel &amp; Stay</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#rsvp">RSVP</a>
+        <a href="#gifts">Gifts &amp; Notes</a>
+      </nav>
+
+      <main>
+        <!-- OUR DAY -->
+        <section id="our-day">
+          <h2>Our Day</h2>
+          <div class="two-column">
+            <div>
+              <!-- EDIT: A short welcome -->
+              <p>
+                We’re so happy to be celebrating our wedding and would love for you to join us.
+                This page has the key details about the day, where to stay, and how to RSVP.
+              </p>
+              <p class="muted" style="margin-top: 8px;">
+                Final timings and extra details will be added closer to the wedding date, so feel free to
+                check back again nearer the time.
+              </p>
+            </div>
+
+            <div class="highlight-box">
+              <!-- EDIT: Ceremony & reception details -->
+              <p><strong>Ceremony &amp; Reception</strong></p>
+              <p>
+                The ceremony and reception will both take place at our chosen venue so that everyone
+                can relax and enjoy the day in one place.
+              </p>
+              <p class="muted" style="margin-top: 6px;">
+                Dress code: smart, comfortable, and ready to dance.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TRAVEL & ACCOMMODATION -->
+        <section id="travel">
+          <h2>Travel &amp; Accommodation</h2>
+
+          <!-- EDIT: Venue details -->
+          <div style="margin-bottom: 12px;">
+            <div class="pill-label">Venue</div>
+            <p><strong>House for an Art Lover</strong><br>
+              10 Dumbreck Rd<br>
+              Glasgow<br>
+              G41 5BW
+            </p>
+          </div>
+
+          <!-- EDIT: Travel info -->
+<div style="margin-top: 12px;">
+  <div class="pill-label">Getting there</div>
+  <p>
+    For detailed directions, travel options, and accessibility information, please visit:<br>
+    <a href="https://www.houseforanartlover.co.uk/visit/travel-accessibility/" target="_blank" rel="noreferrer">
+      House for an Art Lover – Travel & Accessibility ↗
+    </a>
+  </p>
+</div>
+
+
+          <!-- EDIT: Accommodation suggestions -->
+          <div style="margin-top: 16px;">
+            <div class="pill-label">Where to stay</div>
+            <p class="muted">
+              Here are a few options nearby – feel free to stay wherever suits you best.
+            </p>
+            <ul class="list">
+              <li><strong>Hotel or B&amp;B 1</strong> – brief description, approx. distance.</li>
+              <li><strong>Hotel or B&amp;B 2</strong> – brief description, approx. distance.</li>
+              <li><strong>Other options:</strong> Airbnb, local guesthouses, etc.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- SCHEDULE -->
+        <section id="schedule">
+          <h2>Outline Schedule</h2>
+          <!-- EDIT: Adjust times/events as needed -->
+          <p class="muted">
+            Exact timings may change slightly, but the day will roughly follow the plan below.
+          </p>
+          <ul class="schedule-list">
+            <li>
+              <span class="schedule-time">14:00</span>
+              <span class="schedule-event">Guests arrive</span>
+            </li>
+            <li>
+              <span class="schedule-time">14:30</span>
+              <span class="schedule-event">Ceremony</span>
+            </li>
+            <li>
+              <span class="schedule-time">15:00</span>
+              <span class="schedule-event">Drinks &amp; photos</span>
+            </li>
+            <li>
+              <span class="schedule-time">17:00</span>
+              <span class="schedule-event">Dinner &amp; speeches</span>
+            </li>
+            <li>
+              <span class="schedule-time">19:30</span>
+              <span class="schedule-event">Evening guests &amp; dancing</span>
+            </li>
+            <li>
+              <span class="schedule-time">Midnight</span>
+              <span class="schedule-event">Carriages</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- RSVP -->
+        <section id="rsvp">
+          <h2>RSVP</h2>
+          <div class="rsvp-box">
+            <!-- EDIT: RSVP wording and date -->
+            <p>
+              We’d be so grateful if you could let us know if you can join us by
+              <strong>01 January 2026</strong>.
+            </p>
+            <p class="muted" style="margin-bottom: 14px;">
+              You can RSVP online using the link below – it only takes a minute and helps us plan food,
+              seating, and all the little details.
+            </p>
+
+            <!-- EDIT: Replace the href with your Google/Microsoft form link -->
+            <a class="btn" href="https://forms.office.com/Pages/ResponsePage.aspx?id=sAafLmkWiUWHiRCgaTTcYSGxV6GicJpMrYyO67O2bWFUNEU1VkJJMDUwQTNQU1FNTFJFRlhZVDZFWS4u" target="_blank" rel="noreferrer">
+              <span>RSVP online</span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- GIFTS / NOTES -->
+        <section id="gifts">
+          <h2>Gifts &amp; Little Notes</h2>
+          <!-- EDIT: Choose your preferred message -->
+          <p class="note">
+            If you would like to give something, a small contribution towards our future plans would be
+            very gratefully received – but absolutely no pressure.
+          </p>
+
+          <!-- OPTIONAL: Dietary / song requests etc. -->
+          <p class="note">
+            If you have any dietary requirements, you’ll be able to
+            add them on the RSVP form.
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <span>Niall &amp; Krittika • 29 May 2026</span>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

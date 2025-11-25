@@ -56,6 +56,16 @@ body::before {
       overflow-x: hidden;
     }
 
+    .decor-top-left {
+  position: absolute;
+  top: 12px;        /* adjust as needed */
+  left: 12px;       /* adjust as needed */
+  width: 140px;     /* adjust size */
+  opacity: 1.0;    
+  pointer-events: none;
+  z-index: 10;
+}
+
     .card {
       position: relative;
       max-width: 960px;
@@ -336,10 +346,7 @@ body::before {
 <body>
   <div class="page-wrapper">
     <div class="card">
-      <!-- Wildflowers in top-right corner -->
-      <!-- TODO: Replace 'wildflowers.png' with your own image path -->
-      
-
+      <img src="ganesh.png" alt="Ganesh" class="decor-top-left">
       <header>
         <div class="tagline">Save the date</div>
 
@@ -513,3 +520,4 @@ body::before {
   </div>
 </body>
 </html>
+

@@ -56,15 +56,14 @@ body::before {
       overflow-x: hidden;
     }
 
-    .decor-top-left {
-  position: absolute;
-  top: 12px;        /* adjust as needed */
-  left: 12px;       /* adjust as needed */
-  width: 140px;     /* adjust size */
-  opacity: 1.0;    
-  pointer-events: none;
-  z-index: 10;
+ .ganesh-illustration {
+  display: block;
+  margin: 0 auto 12px auto;  /* centre it, add space below */
+  max-width: 180px;          /* cap size on big screens */
+  width: 40%;                /* scales with card width */
+  height: auto;
 }
+
 
     .card {
       position: relative;
@@ -341,13 +340,48 @@ body::before {
       letter-spacing: 0.16em;
       text-transform: uppercase;
     }
+    
+  @media (max-width: 600px) {
+  .card {
+    padding: 24px 18px 32px 18px;
+  }
+
+  header {
+    margin-bottom: 18px;
+  }
+
+  .hero-illustration {
+    max-width: 140px;
+    width: 50%;
+    margin-bottom: 10px;
+  }
+
+  .names {
+    font-size: 1.9rem;
+  }
+
+  .date {
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+  }
+
+  .nav {
+    gap: 6px;
+  }
+
+  section {
+    padding-top: 16px;
+  }
+}
+
   </style>
 </head>
 <body>
   <div class="page-wrapper">
     <div class="card">
-      <img src="ganesh.png" alt="Ganesh" class="decor-top-left">
+      
       <header>
+        <img src="ganesh.png" alt="Ganesh" class="ganesh-illustration">
         <div class="tagline">Save the date</div>
 
         <!-- EDIT: Names -->
@@ -519,6 +553,7 @@ body::before {
   </div>
 </body>
 </html>
+
 
 
 

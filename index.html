@@ -29,6 +29,7 @@
   color: var(--text-main);
   line-height: 1.6;
 
+
   /* New background image */
   background-image: url('wildflowers.png');
   background-repeat: no-repeat;
@@ -45,7 +46,7 @@ body::before {
   pointer-events: none;
   z-index: -1;  /* sit behind content */
 }
-
+ 
 
     .page-wrapper {
       min-height: 100vh;
@@ -99,16 +100,6 @@ body::before {
       height: auto;
       display: block;
       filter: saturate(1.1);
-    }
-
-    /* Subtle “paper” effect behind card */
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 10px 12px auto auto;
-      border-radius: 24px;
-      border: 1px solid rgba(77, 114, 82, 0.12);
-      z-index: -2;
     }
 
     header {
@@ -219,14 +210,6 @@ body::before {
         grid-template-columns: 1.2fr 1fr;
         gap: 24px;
       }
-    }
-
-    .highlight-box {
-      border-radius: 16px;
-      border: 1px solid rgba(77, 114, 82, 0.18);
-      padding: 16px 18px;
-      background: rgba(155, 184, 159, 0.04);
-      font-size: 0.95rem;
     }
 
     .schedule-list {
@@ -342,9 +325,7 @@ body::before {
     }
     
   @media (max-width: 600px) {
-  .card {
-    padding: 24px 18px 32px 18px;
-  }
+
 
   header {
     margin-bottom: 18px;
@@ -373,13 +354,17 @@ body::before {
     padding-top: 16px;
   }
 }
+  .content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 24px 40px 24px;
+}
+
 
   </style>
 </head>
 <body>
-  <div class="page-wrapper">
-    <div class="card">
-      
+    
       <header>
         <img src="ganesh.png" alt="Ganesh" class="ganesh-illustration">
         <div class="tagline">Save the date</div>
@@ -401,6 +386,7 @@ body::before {
         <a href="#rsvp">RSVP</a>
       </nav>
 
+  <div class="content-wrapper">
       <main>
         <!-- OUR DAY -->
         <section id="our-day">
@@ -411,8 +397,7 @@ body::before {
               <p>
                 We’re so happy to be celebrating our wedding and would love for you to join us.
                 This page has the key details about the day, where to stay, and how to RSVP.
-              </p>
-              <p class="muted" style="margin-top: 8px;">
+
                 The ceremony and reception will both take place at our chosen venue so that everyone can relax and enjoy the day in one place. 
                 Final timings and extra details will be added closer to the wedding date, so feel free to check back again nearer the time.
               </p>
@@ -517,14 +502,13 @@ body::before {
         </section>
 
       </main>
-
+</div>
       <footer>
         <span>Niall &amp; Krittika • 29 May 2026</span>
       </footer>
-    </div>
-  </div>
 </body>
 </html>
+
 
 
 

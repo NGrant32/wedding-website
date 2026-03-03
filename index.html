@@ -328,6 +328,38 @@ body::before {
     }
 
     /* Gifts / notes */
+    .gift-details {
+  margin-top: 14px;
+}
+
+.gift-details summary {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(77, 114, 82, 0.28);
+  color: var(--accent);
+  background: rgba(155, 184, 159, 0.06);
+  font-size: 0.95rem;
+  user-select: none;
+}
+
+.gift-details summary:hover {
+  background: rgba(155, 184, 159, 0.18);
+}
+
+.gift-details summary::-webkit-details-marker {
+  display: none; /* hides default triangle in some browsers */
+}
+
+.gift-box {
+  margin: 12px auto 0 auto;
+  max-width: 520px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(77, 114, 82, 0.18);
+  background: rgba(155, 184, 159, 0.05);
+}
     .note {
       font-size: 0.95rem;
       margin-top: 6px;
@@ -547,6 +579,7 @@ body::before {
       </footer>
 </body>
 </html>
+
 
 
 
